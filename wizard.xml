@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/****************************************************************************
+**
+** Copyright (C) 2014 Digia Plc and/or its subsidiary(-ies).
+** Contact: http://www.qt-project.org/legal
+**
+** This file is part of Qt Creator.
+**
+** Commercial License Usage
+** Licensees holding valid commercial Qt licenses may use this file in
+** accordance with the commercial license agreement provided with the
+** Software or, alternatively, in accordance with the terms contained in
+** a written agreement between you and Digia.  For licensing terms and
+** conditions see http://qt.digia.com/licensing.  For further information
+** use the contact form at http://qt.digia.com/contact-us.
+**
+** GNU Lesser General Public License Usage
+** Alternatively, this file may be used under the terms of the GNU Lesser
+** General Public License version 2.1 as published by the Free Software
+** Foundation and appearing in the file LICENSE.LGPL included in the
+** packaging of this file.  Please review the following information to
+** ensure the GNU Lesser General Public License version 2.1 requirements
+** will be met: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html.
+**
+** In addition, as a special exception, Digia gives you certain additional
+** rights.  These rights are described in the Digia Qt LGPL Exception
+** version 1.1, included in the file LGPL_EXCEPTION.txt in this package.
+**
+****************************************************************************/
+
+Custom project wizard configuration example file. Note that by convention,
+the project file goes last.
+The "class" and "firstpage" attributes specify that it is a Qt 4 wizard and
+leave room for the Qt 4 target page.
+-->
+<wizard version="1" kind="project"
+        class="qt4project" firstpage="10"
+        id="A.BeagleboneBlackProject" category="B.BeagleboneBlack">
+    <icon>beaglebone.gif</icon>
+    <description>Creates a new Beaglebone Black project</description>
+    <description xml:lang="de">Erzeugt ein neues Beaglebone Black Projekt</description>
+    <displayname>Qt4-Application</displayname>
+    <displayname xml:lang="de">Qt4-Anwendung</displayname>
+    <displaycategory>Beaglebone Black</displaycategory>
+    <files>
+        <file source="main.cpp" openeditor="false"/>
+        <file source="mainwindow.cpp" target="%ClassName:l%.%CppSourceSuffix%" openeditor="true"/>
+        <file source="mainwindow.h" target="%ClassName:l%.%CppHeaderSuffix%" openeditor="false"/>
+        <file source="mainwindow.ui" target="%ClassName:l%.ui" openeditor="false"/>
+        <file source="project.pro" target="%ProjectName%.pro" openproject="true"/>
+    </files>
+
+    <fieldpagetitle>Project properties</fieldpagetitle>
+    <fieldpagetitle xml:lang="de">Projekteigenschaften</fieldpagetitle>
+	<fields>
+		<field name="ClassName">
+			<fieldcontrol class="QLineEdit" validator="^[a-zA-Z0-9_]+$" defaulttext="MainWindow" />
+			<fielddescription>Class name:</fielddescription>
+			<fielddescription xml:lang="de">Klassenname:</fielddescription>
+		</field>
+                <field name="RemotePath">
+			<fieldcontrol class="QLineEdit" validator="^[a-zA-Z0-9_/]+$" defaulttext="/home/debian" />
+			<fielddescription>Beaglebone remote installation path:</fielddescription>
+			<fielddescription xml:lang="de">Installationspfad auf Beaglebone:</fielddescription>
+                 </field>
+		<field name="OGLES2Support">
+			<fieldcontrol class="QCheckBox" defaultvalue="false"/>
+			<fielddescription>Enable OpenGL ES2 support</fielddescription>
+			<fielddescription xml:lang="de">OpenGL ES2 Unterstützung aktivieren</fielddescription>
+		</field>
+	</fields>
+</wizard>
